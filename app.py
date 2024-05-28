@@ -104,7 +104,7 @@ def delete_user(id_user):
         else:
             flash("User not found", "error")
 
-        return redirect(url_for('home'))
+        return redirect(url_for('account'))
 
     # If the request method is not POST, return a method not allowed error
     return "Method not allowed", 405
