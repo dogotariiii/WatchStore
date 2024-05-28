@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  url("../../photos/login.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: #858585;
+    padding: 34px;
+    border-radius: 6px;
+}
+
+.wrapper h2 {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+.wrapper form {
+    margin-top: 30px;
+}
+
+.wrapper form .input-box {
+    margin: 18px 0;
+}
+
+form .input-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+    border: 1.5px solid #C7BEBE;
+    border-bottom-width: 2.5px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-color: #ffffff;
+}
+
+form .policy {
+    display: flex;
+    align-items: center;
+}
+label {
+    margin: 0 !important;
+}
+
+form h3 {
+    color: #707070;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.input-box.button input {
+    color: #ffffff;
+    letter-spacing: 1px;
+    border: none;
+    background: #000000;
+    cursor: pointer;
+}
+
+.input-box.button input:hover {
+    background: #757575;
+}
+
+form .text h3 {
+    color: #3b4343;
+    width: 100%;
+    text-align: center;
+}
+
+form .text h3 a {
+    color: #3b4343;
+    text-decoration: none;
+}
+
+form .text h3 a:hover {
+    text-decoration: underline;
+
+
+}
+
+.back-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #757575;
+}

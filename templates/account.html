@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html' %}
+    <link href="{{ url_for('static', filename='styles/account.css') }}" rel="stylesheet">
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<div class="container-body">
+    <h1>Welcome to Your Account</h1>
+    <p>Hello, {{ username }}!</p>
+    <p>This is your account page. You can customize it as per your requirements.</p>
+    <a class="logout-btn" href="/logout">Logout</a>
+    <a href="/"> Home </a>
+
+    {% if is_admin %}
+    <div class="admin-table">
+        <input checked id="users" name="table" type="radio">
+        <input id="watches" name="table" type="radio">
+        <input id="orders" name="table" type="radio">
+
+
+        <div class="table-controls">
+            <label class="table-switch-btn" for="users">Users</label>
+            <label class="table-switch-btn" for="watches">Watches</label>
+            <label class="table-switch-btn" for="orders">Orders</label>
+        </div>
+
+        <table id="users-table">
+            <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Admin Role</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in all_users %}
+            <tr>
+                <td>{{ user.id_user }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.is_admin }}</td>
+                <td>
+                    <form action="/delete-user/{{ user.id_user }}" method="post"
+                          onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="delete-btn" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table id="orders-table">
+            <thead>
+            <tr>
+                <th>Watch ID</th>
+                <th>Watch Model</th>
+                <th>Watch Name</th>
+                <th>Decorations</th>
+                <th>Order Date</th>
+                <th>Price</th>
+                <th>Total Price</th>
+                <th>Total Items</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for rented_watch in rented_watches %}
+            <tr>
+                <td>{{ rented_watch.watch_id }}</td>
+                <td>{{ rented_watch.watch_model }}</td>
+                <td>{{ rented_watch.watch_name }}</td>
+                <td>{{ rented_watch.decorations }}</td>
+                <td>{{ rented_watch.order_date }}</td>
+                <td>{{ rented_watch.price }}</td>
+                <td>{{ rented_watch.total_price }}</td>
+                <td>{{ rented_watch.total_items }}</td>
+                <td>
+                    <form action="/delete-rental/{{ rented_watch.id }}" method="post">
+                        <button class="delete-btn" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <table id="watches-table">
+            <thead>
+            <tr>
+                <th>watch ID</th>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Case Material</th>
+                <th>Dial Color</th>
+                <th>Price</th>
+                <th>State</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for watch in watches %}
+            <tr>
+                <td>{{ watch.id }}</td>
+                <td>{{ watch.name }}</td>
+                <td>{{ watch.model }}</td>
+                <td>{{ watch.case_material }}</td>
+                <td>{{ watch.dial_color }}</td>
+                <td>{{ watch.price }}</td>
+                <td>{{ watch.state }}</td>
+                <td>
+                    <form action="/delete-watch/{{ watch.id }}" method="POST">
+                        <button class="delete-btn" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    {% endif %}
+
+
+</div>
+
+<h2>Notifications</h2>
+<ul class="notification-list">
+    {% for notification in notifications %}
+    <li>{{ notification }}</li>
+    {% endfor %}
+</ul>
+
+
+{% include 'footer.html' %}
+
+</body>
+</html>

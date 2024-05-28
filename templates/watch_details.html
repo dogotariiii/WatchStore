@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html' %}
+    <link href="{{ url_for('static', filename='styles/watch_details.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- Header Section -->
+{% include 'header.html' %}
+
+<!-- Watch Details Section -->
+<section class="watch-details">
+    <h1>Ready to Purchase?</h1>
+    <div class="container">
+        <div class="watch-info">
+            <div class="watch-description">
+                <p>{{ watch.name }} {{ watch.model }}</h2>
+                <p><strong>Case Material:</strong> {{ watch.case_material }}</p>
+                <p><strong>Dial Color:</strong> {{ watch.dial_color }}</p>
+                <p><strong>Price:</strong> ${{ watch.price }}</p>
+            </div>
+        </div>
+        <div class="purchase-form-section">
+            <!-- Order Form -->
+            <form action="/order/{{ watch.id }}" id="purchase-form" method="POST">
+                <!-- Decoration Options -->
+                <div class="decoration-options">
+                    <label for="total_items">Quantity:</label>
+                    <input id="total_items" name="total_items" required step="1" type="number"><br>
+                    <input id="spare_strap" name="decorators" type="checkbox" value="SpareStrap">
+                    <label for="spare_strap">Spare Strap</label><br>
+                    <input id="case" name="decorators" type="checkbox" value="Case">
+                    <label for="case">Case</label><br>
+                    <input id="gift_box" name="decorators" type="checkbox" value="GiftBox">
+                    <label for="gift_box">Gift Box</label><br>
+                </div>
+                <button type="submit">Purchase watch</button>
+            </form>
+        </div>
+        <div class="watch-actions">
+            <a class="button back-button" href="/watches">Back to watches</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+{% include 'footer.html' %}
+
+</body>
+</html>

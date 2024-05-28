@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html' %}
+    <link href="{{ url_for('static', filename='styles/add_watch.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% include 'header.html' %}
+<main>
+    <section id="new-watch-form">
+        <h2>Add a New watch</h2>
+        <form action="/submit-new-watch" enctype="multipart/form-data" method="POST">
+            <label for="name">Name:</label>
+            <input id="name" name="name" required type="text">
+
+            <label for="model">Model:</label>
+            <input id="model" name="model" required type="text">
+
+            <label for="case_material">Case Material:</label>
+            <input id="case_material" max="2024" min="1900" name="case_material" required type="text">
+
+
+            <label for="dial_color">Dial Color:</label>
+            <input id="dial_color" name="dial_color" required type="text">
+
+            <label for="price">Price:</label>
+            <input id="price" name="price" required step="5" type="number">
+
+            <label for="image_url">Image:</label>
+            <input accept="image/*" id="image_url" name="image_url" required type="file">
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+</main>
+{% include 'footer.html' %}
+
+</body>
+</html>
